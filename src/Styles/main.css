@@ -1,0 +1,43 @@
+.cards-section {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	align-items: center;
+}
+
+.milk-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	border: 2px solid rgb(169, 169, 169);
+	margin: 2rem 5rem;
+	border-radius: 1rem;
+
+}
+
+.milk-card-img {
+	background: #f1f1f1;
+	border-radius: 1rem 1rem 0 0;
+	padding: 1rem;
+}
+
+.milk-card-img img{
+	width: 12rem;
+	height: auto;
+}
+
+.milk-card-description {
+	background: white;
+	border-radius: 0 0 1rem 1rem;
+	height: 5rem;
+}
+
+.milk-card-description h1{
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.milk-card-description-dtls {
+	display: flex;
+	justify-content: space-around;
+}

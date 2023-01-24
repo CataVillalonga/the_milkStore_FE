@@ -1,13 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import Header from './Components/Header'
+import Searchbar from './Components/Search'
+import Main from './Components/Main'
+import {milkData} from './types'
+import './Styles/reset.css'
+import './Styles/app.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data,setData] = useState<milkData[]>([{
+    name: '',
+    type: '',
+    storage: 0,
+    id: ''
+  }])
+  const fetchData = async (url:string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    setData(data.results);
+  };
+
+  useEffect(() => {
+    fetchData('/api/milks')
+  },[])
+
+  const allMilktypeValues = data.map(value => value.type);
+  const milkTypes = new Set(allMilktypeValues)
 
   return (
     <div className="App">
-        Bananitas
+      <Header/>
+      <Searchbar data={data} milkTypes={milkTypes}/>
+      <Main data={data}/>
     </div>
   )
 }
