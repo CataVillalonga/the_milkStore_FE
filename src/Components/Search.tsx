@@ -2,7 +2,6 @@ import '../Styles/search.css'
 import { ISearchCompProps } from '../types'
 
 const Search = ({data,milkTypes}:ISearchCompProps) => {
-	console.log(milkTypes)
   return (
     <section className="search-section">
 			<div className="search-section-search">

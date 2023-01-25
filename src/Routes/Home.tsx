@@ -26,7 +26,6 @@ function Home({data}:IMilkDataProps) {
 
   return (
     <div className="App">
-      <Header/>
       <Searchbar data={data} milkTypes={milkTypes}/>
       <Main data={currentRecords} />
       <Pagination

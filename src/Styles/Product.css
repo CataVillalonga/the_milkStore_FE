@@ -1,0 +1,15 @@
+.product-section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 6rem;
+    background-color: #ffd8df
+}
+
+.product-section img{
+    display: flex;
+    background: #f1f1f1;
+	border-radius: 1rem ;
+    border: 2px solid rgb(169, 169, 169);
+	padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
