@@ -13,3 +13,9 @@ export interface ISearchCompProps {
 	data: milkData[]
 	milkTypes:Set<string>
 }
+
+export interface IPagCompProps {
+	numOfPages :number
+	currentPage :number
+	setCurrentPage:React.Dispatch<React.SetStateAction<number>>
+}
