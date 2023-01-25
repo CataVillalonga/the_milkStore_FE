@@ -19,3 +19,8 @@ export interface IPagCompProps {
 	currentPage :number
 	setCurrentPage:React.Dispatch<React.SetStateAction<number>>
 }
+
+export interface IProductRouteProps {
+	milk: milkData,
+	i:number
+}
