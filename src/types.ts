@@ -10,7 +10,7 @@ export interface IMilkDataProps {
 }
 
 export interface ISearchCompProps {
-	currentDataDisplay: milkData[]
+	data: milkData[]
 	milkTypes:string[]
 	setCurrentDataDisplay: React.Dispatch<React.SetStateAction<milkData[]>>
 }

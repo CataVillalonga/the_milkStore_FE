@@ -1,28 +1,32 @@
-import { FormEvent, MouseEvent, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, MouseEvent, useRef, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 import { ISearchCompProps } from '../types'
 import '../Styles/search.css'
 
-const Search = ({currentDataDisplay,milkTypes,setCurrentDataDisplay}:ISearchCompProps) => {
+const Search = ({data,milkTypes,setCurrentDataDisplay}:ISearchCompProps) => {
 
 	const searchValueRef = useRef<HTMLInputElement | null>(null)
 	const [searchErrorMsg, setSearchErrorMsg] = useState<string | boolean>(false)
+	const navigate = useNavigate();
 
-	const handleFilter = (e: MouseEvent<HTMLOptionElement, globalThis.MouseEvent>) => {
-		console.log(e.currentTarget.value)
+	const handleFilter = (e: ChangeEvent<HTMLSelectElement>) => {
+		if(e.target.value === 'All'){
+			return setCurrentDataDisplay(data)
+		}
+		const filteredMilkByType = data.filter(milk => milk.type === e.target.value)
+		return setCurrentDataDisplay(filteredMilkByType)
 	}
 
 	const nameFilter =(input: string) => {
-
-		const filteredData = currentDataDisplay.find(milk => milk.name === input)
-		//fix the else statement
-		if(filteredData !== undefined){
-			return setCurrentDataDisplay([filteredData])
+		const filteredMilkByName = data.find(milk => milk.name === input)
+		if(filteredMilkByName !== undefined){
+			return navigate(`/milks/${filteredMilkByName.id}`)
 		}
+		//fix this
 			return setSearchErrorMsg("Upps! it seems that we don't have that item in our stock !")
  	}
 	
 	const handleSearch = (e: FormEvent<HTMLFormElement>) => {
-
 		const inputChecker= /^[a-zA-Z]+$'/g
 		e.preventDefault()
 		if(searchValueRef.current !== null && 
@@ -45,11 +49,11 @@ const Search = ({currentDataDisplay,milkTypes,setCurrentDataDisplay}:ISearchComp
 				{searchErrorMsg ? <p>{searchErrorMsg}</p> : <p></p>}
 			</form>
 			<div className="search-section-filter">
-				<select name="milk-names" id="milk-names">
-					<option value="">Filter by milk type :</option>
+				<select name="milk-names" id="milk-names" onChange={(e) => handleFilter(e)}>
+					<option value='All'>Show all milks</option>
 					{milkTypes.map(type => {
 						return (
-							<option value={type} onClick={(e) => handleFilter(e)}>{type}</option>
+							<option value={type}>{type}</option>
 						)
 					})}
 				</select>

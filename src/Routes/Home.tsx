@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react'
-import Header from '../Components/Header'
+import { useState } from 'react'
 import Searchbar from '../Components/Search'
 import Main from '../Components/Main'
 import Pagination from '../Components/Pagination'
-import { IMilkDataProps } from '../types'
-
+import { IMilkDataProps, milkData } from '../types'
 
 function Home({data}:IMilkDataProps) {
-	const [currentDataDisplay,setCurrentDataDisplay] = useState(data) 
+	const [currentDataDisplay,setCurrentDataDisplay] = useState<milkData[]>(data) 
   // Users current page
   const [currentPage, setCurrentPage] = useState(1);
   // No of Records displayeded on each page   
@@ -25,7 +23,7 @@ function Home({data}:IMilkDataProps) {
 
   return (
     <div className="App">
-      <Searchbar currentDataDisplay={currentDataDisplay} milkTypes={milkTypes} setCurrentDataDisplay={setCurrentDataDisplay}/>
+      <Searchbar data={data} milkTypes={milkTypes} setCurrentDataDisplay={setCurrentDataDisplay}/>
       <Main data={currentRecords} />
       <Pagination
         numOfPages = {numOfPages}
