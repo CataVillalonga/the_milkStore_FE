@@ -10,8 +10,9 @@ export interface IMilkDataProps {
 }
 
 export interface ISearchCompProps {
-	data: milkData[]
-	milkTypes:Set<string>
+	currentDataDisplay: milkData[]
+	milkTypes:string[]
+	setCurrentDataDisplay: React.Dispatch<React.SetStateAction<milkData[]>>
 }
 
 export interface IPagCompProps {

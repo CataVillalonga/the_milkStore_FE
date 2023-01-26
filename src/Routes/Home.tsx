@@ -7,7 +7,7 @@ import { IMilkDataProps } from '../types'
 
 
 function Home({data}:IMilkDataProps) {
-
+	const [currentDataDisplay,setCurrentDataDisplay] = useState(data) 
   // Users current page
   const [currentPage, setCurrentPage] = useState(1);
   // No of Records displayeded on each page   
@@ -15,18 +15,17 @@ function Home({data}:IMilkDataProps) {
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   // Records to be displayed on the current page
-  const currentRecords = data.slice(indexOfFirstRecord, 
+  const currentRecords = currentDataDisplay.slice(indexOfFirstRecord, 
   indexOfLastRecord);
   //calculate number of pages
-  const numOfPages = Math.ceil(data.length / recordsPerPage)
+  const numOfPages = Math.ceil(currentDataDisplay.length / recordsPerPage)
 
-  console.log(currentRecords)
   const allMilktypeValues = data.map(value => value.type);
-  const milkTypes = new Set(allMilktypeValues)
+  const milkTypes = Array.from(new Set(allMilktypeValues))
 
   return (
     <div className="App">
-      <Searchbar data={data} milkTypes={milkTypes}/>
+      <Searchbar currentDataDisplay={currentDataDisplay} milkTypes={milkTypes} setCurrentDataDisplay={setCurrentDataDisplay}/>
       <Main data={currentRecords} />
       <Pagination
         numOfPages = {numOfPages}

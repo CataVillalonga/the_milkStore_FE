@@ -11,7 +11,7 @@ const Main = ({data}:IMilkDataProps) => {
     navigate(`/milks/${id}`)
   }
   return (
-    <main className='main-section'>
+    <main id='main' className='main-section'>
       <section className='cards-section'>
         {data.map(milk =>{
           const {id} = milk

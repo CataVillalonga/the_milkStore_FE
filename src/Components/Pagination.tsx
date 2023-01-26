@@ -15,7 +15,6 @@ const Pagination = ({numOfPages, currentPage, setCurrentPage}:IPagCompProps) => 
 			setCurrentPage(currentPage - 1)
 	}
 
-	console.log(currentPage)
   return (
     <nav>
 			<ul className='pagination justify-content-center'>

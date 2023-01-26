@@ -1,0 +1,14 @@
+.search-section {
+  background-color: #ffd8df;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 5rem;
+}
+
+.search-section-input {
+	border-radius: 1rem 0 0 1rem;
+}
+
+.icon {
+}
+
