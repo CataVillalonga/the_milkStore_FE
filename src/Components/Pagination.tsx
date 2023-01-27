@@ -16,22 +16,24 @@ const Pagination = ({numOfPages, currentPage, setCurrentPage}:IPagCompProps) => 
 	}
 
   return (
-    <nav>
+    <nav className='pagination-section'>
 			<ul className='pagination justify-content-center'>
 				<li className='page-item'>
 					<a href="#" className='page-link' onClick={prevPage}>
 						Prev
 					</a>
 				</li>
-				{pageNumbers.map(pageNum => {
-					return (
-						<li key={pageNum} className={`page-item ${currentPage === pageNum ?'active':''}`}>
-							<a href="#" className='page-link' onClick={()=> setCurrentPage(pageNum)}>
-							{pageNum}
-							</a>	
-						</li>
-					)
-				})}
+				<li key={pageNumbers[0]} className={`page-item ${currentPage === pageNumbers[0] ?'active':''}`}>
+							<a href="#" className='page-link' onClick={()=> setCurrentPage(pageNumbers[0])}>
+							{pageNumbers[0]}
+							</a>
+				</li>
+				<p className='page-item page-link'>of</p>
+				<li key={pageNumbers[pageNumbers.length-1]} className={`page-item ${currentPage === pageNumbers[pageNumbers.length-1] ?'active':''}`}>
+							<a href="#" className='page-link' onClick={()=> setCurrentPage(pageNumbers[pageNumbers.length-1])}>
+							{pageNumbers[pageNumbers.length-1]}
+							</a>
+				</li>
 				<li className='page-item'>
 					<a href="#" className='page-link' onClick={nextPage}>
 						Next

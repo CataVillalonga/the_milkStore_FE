@@ -15,9 +15,7 @@ function App() {
     storage: 0,
     id: ''
   }])
-  
   const [isLoading,setIsLoading] = useState(true);
-
   const fetchData = async (url:string) => {
     const response = await fetch(url);
     const data = await response.json();
@@ -28,7 +26,6 @@ function App() {
   useEffect(() => {
     fetchData('/api/milks')
   },[])
-
   return (
     <>
       <Header/>
